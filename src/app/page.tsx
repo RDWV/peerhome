@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 
 const features = [
   {
@@ -46,11 +45,6 @@ const timeline = [
 ];
 
 export default function Home() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
