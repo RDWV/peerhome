@@ -7,14 +7,39 @@ import Image from 'next/image';
 const teamMembers = [
   {
     name: 'Jakob Kaiser',
-    role: 'Team: Computer science',
-    image: '/team/jakob.jpg', // You'll need to add these images to the public folder
+    role: 'Team: Computer Science',
+    bio: 'Leading the technical development of Peer Network with expertise in blockchain and distributed systems.',
+    image: '/team/jakob.jpg',
   },
   {
     name: 'Ender Küçükoğlu',
     role: 'Team: Strategy',
+    bio: 'Driving the strategic vision and business development of Peer Network, focusing on growth and partnerships.',
     image: '/team/ender.jpg',
   },
+];
+
+const achievements = [
+  {
+    title: "User Privacy",
+    description: "Complete control over your data with blockchain-based security",
+    icon: "🔐"
+  },
+  {
+    title: "Decentralized",
+    description: "No central server - your data remains yours",
+    icon: "🌐"
+  },
+  {
+    title: "Fair Rewards",
+    description: "Earn gems based on your content's popularity and engagement",
+    icon: "💎"
+  },
+  {
+    title: "Community Driven",
+    description: "Active participation shapes the network's future",
+    icon: "👥"
+  }
 ];
 
 export default function About() {
@@ -34,17 +59,52 @@ export default function About() {
               What is Peer?
             </h1>
             <p className="text-xl text-gray-300 leading-relaxed mb-12">
-              With peer you create and share individual content, take part in votings and earn gems, peer&apos;s own cryptocurrency, with every interaction. By active participation as blockfluencer you have direct influence on the blockchain based network &quot;peer&quot;. Active participation is defined by published content, active useage of services, but also by voting on polls used for further development of the network and its components.
+              Peer Network is a revolutionary social platform where content creators can monetize their influence through our unique cryptocurrency, Peer Gems. By actively participating as a blockfluencer, you directly influence the blockchain-based network while earning rewards for your contributions.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link href="#contact" className="btn-primary w-full sm:w-auto">
                 Get in contact with us
               </Link>
-              <Link href="#" className="btn-white w-full sm:w-auto">
-                Concept paper
+              <Link href="/whitepaper.pdf" className="btn-white w-full sm:w-auto" target="_blank" rel="noopener noreferrer">
+                Download Whitepaper
               </Link>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Achievements Grid */}
+      <section className="py-20 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-900/10 to-black" />
+        <div className="container relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold mb-6">Our Core Values</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Building a secure, transparent, and rewarding social network for creators
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {achievements.map((achievement, index) => (
+              <motion.div
+                key={achievement.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="card hover:border-blue-500/50 transition-all duration-300"
+              >
+                <div className="text-4xl mb-4">{achievement.icon}</div>
+                <h3 className="text-xl font-bold mb-3">{achievement.title}</h3>
+                <p className="text-gray-300">{achievement.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -59,11 +119,11 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="card"
+              className="card hover:border-blue-500/50 transition-all duration-300"
             >
-              <h2 className="text-2xl font-bold mb-4">The peer gems</h2>
+              <h2 className="text-2xl font-bold mb-4">The Peer Gems</h2>
               <p className="text-gray-300">
-                Gems are a decentralized cryptocurrency used on the peer platform. You can earn gems by publishing content, taking part in votings, by interacting with the website in different ways or by sharing of original content and gaining traction.
+                Peer Gems are our decentralized cryptocurrency, earned through active participation in the network. Create content, engage in votings, and share original work to earn gems that can be converted into real value.
               </p>
             </motion.div>
 
@@ -73,11 +133,11 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="card"
+              className="card hover:border-blue-500/50 transition-all duration-300"
             >
-              <h2 className="text-2xl font-bold mb-4">The peer blockchain</h2>
+              <h2 className="text-2xl font-bold mb-4">The Peer Blockchain</h2>
               <p className="text-gray-300">
-                Peer is a userfriendly social network. It does not run on a central server, which ensures a high security and privacy level for your data.
+                Our decentralized infrastructure ensures maximum security and privacy. Without a central server, your data remains under your control while maintaining a seamless user experience.
               </p>
             </motion.div>
 
@@ -87,11 +147,11 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="card"
+              className="card hover:border-blue-500/50 transition-all duration-300"
             >
-              <h2 className="text-2xl font-bold mb-4">Data security on peer</h2>
+              <h2 className="text-2xl font-bold mb-4">Data Security</h2>
               <p className="text-gray-300">
-                On peer, you and only you decide who is able to see and use your data. To ensure this, the whole peer platform is based on a decentralized blockchain technology, to ensure full control, transparency and security. If you click on data sharing you get gems equal to the worth of your data for every second that you&apos;re online.
+                You have complete control over your data sharing preferences. Our blockchain technology ensures transparency and security, while rewarding you with gems for every second you choose to share your data.
               </p>
             </motion.div>
           </div>
@@ -113,7 +173,7 @@ export default function About() {
               Meet Our Team
             </h2>
             <p className="text-xl text-gray-300">
-              The team behind peer combines expertise in technology, economy, design, and have been working since 2018 in the startup metropolis Berlin.
+              Since 2018, our team has been working in Berlin&apos;s startup ecosystem, combining expertise in technology, economics, and design to create the future of social networking.
             </p>
           </motion.div>
 
@@ -136,7 +196,8 @@ export default function About() {
                   />
                 </div>
                 <h3 className="text-2xl font-bold text-center mb-2">{member.name}</h3>
-                <p className="text-gray-400 text-center">{member.role}</p>
+                <p className="text-blue-400 text-center mb-4">{member.role}</p>
+                <p className="text-gray-300 text-center">{member.bio}</p>
               </motion.div>
             ))}
           </div>
@@ -156,14 +217,17 @@ export default function About() {
               className="card"
             >
               <h2 className="text-2xl font-bold mb-6 text-center">Stay Updated</h2>
+              <p className="text-gray-300 text-center mb-8">
+                Subscribe to our newsletter for the latest updates on Peer Network&apos;s development and upcoming features.
+              </p>
               <form className="flex flex-col sm:flex-row gap-4">
                 <input
                   type="email"
-                  placeholder="Sign up for the newsletter here ..."
+                  placeholder="Enter your email address"
                   className="flex-grow bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
                 />
                 <button type="submit" className="btn-primary whitespace-nowrap">
-                  Send
+                  Subscribe
                 </button>
               </form>
             </motion.div>
